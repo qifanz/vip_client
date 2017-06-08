@@ -1,4 +1,4 @@
-package fr.insalyon.creatis.vip.cli.Vue;
+package fr.insalyon.creatis.vip.cli.vue;
 
 import static java.lang.System.exit;
 
@@ -9,8 +9,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.List;
 
 import fr.insalyon.creatis.vip.java_client.model.Execution;
+import fr.insalyon.creatis.vip.java_client.model.Pipeline;
+import fr.insalyon.creatis.vip.java_client.model.PlatformProperties;
 
 public class UtilIO {
 
@@ -52,5 +55,22 @@ public class UtilIO {
 		writer.println(execution.getStatus());
 		writer.close();
 
+	}
+	
+	
+	public static void printPlatformProperties (PlatformProperties platformproperty){
+		System.out.println("Platform name: " + platformproperty.getPlatformName());
+		System.out.println("Platform description: " + platformproperty.getPlatformDescription());
+		System.out.println("Api version supported: " + platformproperty.getSupportedAPIVersion());
+		System.out.println("Contact email: " + platformproperty.getEmail());
+	}
+	
+	public static void printPipelinesList(List<Pipeline> pipelinesList){
+		for (Pipeline pipeline : pipelinesList) {
+			
+			System.out.println("Name: " + pipeline.getName());
+			System.out.println("Version: " + pipeline.getVersion());
+			System.out.println("Can execute: " + pipeline.getCanExecute()+"\r\n");
+		}
 	}
 }

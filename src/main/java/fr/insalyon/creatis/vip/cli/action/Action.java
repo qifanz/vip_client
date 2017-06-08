@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.insalyon.creatis.vip.cli.Action;
+package fr.insalyon.creatis.vip.cli.action;
 
 import fr.insalyon.creatis.vip.java_client.ApiException;
 import fr.insalyon.creatis.vip.java_client.api.DefaultApi;
@@ -12,16 +12,11 @@ import fr.insalyon.creatis.vip.java_client.api.DefaultApi;
  *
  * @author qzhang
  */
-public class ListExecutionAction extends Action{
-    public ListExecutionAction(){
-        
-    }
-    public ListExecutionAction(DefaultApi api){
-        super(api);
-    }
+public interface  Action<T> {
     
-    public Object execute() throws ApiException{
-        return defaultApi.listExecutions();
-    }
+
     
+    public T execute (DefaultApi api) throws ApiException;
+    
+
 }
