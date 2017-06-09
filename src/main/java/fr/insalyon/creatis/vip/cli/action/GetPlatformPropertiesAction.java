@@ -15,11 +15,11 @@ import fr.insalyon.creatis.vip.java_client.model.PlatformProperties;
  *
  * @author qzhang
  */
-public class GetPlatformPropertyAction implements Action<PlatformProperties>{
+public class GetPlatformPropertiesAction implements Action<PlatformProperties>{
    
   
     
-    public GetPlatformPropertyAction(){
+    public GetPlatformPropertiesAction(){
         
     }
     

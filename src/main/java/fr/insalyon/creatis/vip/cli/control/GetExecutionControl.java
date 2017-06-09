@@ -6,13 +6,16 @@ import fr.insalyon.creatis.vip.java_client.api.DefaultApi;
 import fr.insalyon.creatis.vip.java_client.model.Execution;
 
 public class GetExecutionControl {
-	String[] args;
-	public GetExecutionControl(String[]args) {
+	Arguments args;
+	DefaultApi api;
+	public GetExecutionControl(DefaultApi api,Arguments args) {
 		this.args=args;
+		this.api=api;
 	}
 	
-	public Execution execute (DefaultApi api) {
-		GetExecutionAction getExecutionAction = new GetExecutionAction(args[1]);
+	public Execution execute () {
+		String id=args.getListArgs().get("");
+		GetExecutionAction getExecutionAction = new GetExecutionAction(id);
 		Execution execution=null;
 		try {
 			 execution = getExecutionAction.execute(api);			

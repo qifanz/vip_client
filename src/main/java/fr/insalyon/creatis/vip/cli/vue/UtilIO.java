@@ -11,6 +11,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.List;
 
+import fr.insalyon.creatis.vip.cli.model.InfoExecution;
+import fr.insalyon.creatis.vip.cli.model.InfoExecutionDAO;
 import fr.insalyon.creatis.vip.java_client.model.Execution;
 import fr.insalyon.creatis.vip.java_client.model.Pipeline;
 import fr.insalyon.creatis.vip.java_client.model.PlatformProperties;
@@ -43,6 +45,10 @@ public class UtilIO {
 	}
 
 	public static void printResultatExecute(Execution execution, String repertoire) {
+		
+		InfoExecution infoExecution=new InfoExecution(execution.getIdentifier(),execution.getPipelineIdentifier(),execution.getStatus().toString(),repertoire,execution.getStartDate());
+		InfoExecutionDAO infoDAO=new InfoExecutionDAO();
+		infoDAO.persist(infoExecution);
 		PrintWriter writer = new PrintWriter(System.out);
 		writer.println("identifier: " + execution.getIdentifier());
 		writer.println("directory: " + repertoire);
@@ -51,6 +57,10 @@ public class UtilIO {
 	}
 
 	public static void printExecutionDetial(Execution execution) {
+		InfoExecutionDAO infoDAO=new InfoExecutionDAO();
+		infoDAO.upadteStatusByExecutionId(execution.getIdentifier(), execution.getStatus().toString());
+		
+		
 		PrintWriter writer = new PrintWriter(System.out);
 		writer.println(execution.getStatus());
 		writer.close();

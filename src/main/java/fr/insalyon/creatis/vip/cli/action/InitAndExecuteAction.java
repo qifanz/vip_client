@@ -27,7 +27,7 @@ public class InitAndExecuteAction implements Action<Execution> {
 		List<PipelineParameter> parametersToUse=pipelineToUse.getParameters();
 		for (PipelineParameter pipelineParameter : parametersToUse) {
 			if (execution.getInputValues().get(pipelineParameter.getName())==null) {
-				System.err.println("not enough inputs");
+				System.err.println("not enough inputs or input not correct");
 				exit(0);
 			}
 		}
