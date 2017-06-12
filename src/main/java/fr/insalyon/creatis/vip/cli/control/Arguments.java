@@ -9,7 +9,7 @@ public class Arguments {
 
 	public enum Action {
 		EXECUTE, STATUS
-	};
+	}
 
 	String action;
 
@@ -23,11 +23,10 @@ public class Arguments {
 		if (args[0].equals("execute")) {
 			action = "execute";
 		} else if (args[0].equals("status")) {
-			action ="status";
-		} else if(args[0].equals("executions")){
-			action="executions";
-		}
-		else {
+			action = "status";
+		} else if (args[0].equals("executions")) {
+			action = "executions";
+		} else {
 			System.err.println("Option not correct");
 			exit(0);
 		}
@@ -35,9 +34,9 @@ public class Arguments {
 		int it = 1;
 		while (it < args.length) {
 			if (!args[it].substring(0, 2).equals("--")) {
-				if (listArgs.containsKey("")){
-					
-				}else {
+				if (listArgs.containsKey("")) {
+
+				} else {
 					listArgs.put("", args[it]);
 				}
 				it++;
@@ -54,11 +53,12 @@ public class Arguments {
 		}
 
 	}
-	public Map<String,String> getListArgs(){
+
+	public Map<String, String> getListArgs() {
 		return listArgs;
 	}
-	
-	public String getAction(){
+
+	public String getAction() {
 		return action;
 	}
 

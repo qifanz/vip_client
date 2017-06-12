@@ -7,38 +7,40 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
-	private static Configuration configuration;
 	private static StandardServiceRegistry serviceRegistry;
 	private static SessionFactory sessionFactory;
 	private static Session session;
 
 	public static void init() {
-		configuration = new Configuration().configure();
-		
-		serviceRegistry = 
-                new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-		
+		Configuration configuration = new Configuration().configure();
+
+		serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+
 		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 	}
+
 	public static void close() {
 		sessionFactory.close();
 		StandardServiceRegistryBuilder.destroy(serviceRegistry);
 	}
-	
 
 	public static void openSession() {
+
 		session = sessionFactory.openSession();
 	}
 
 	public static void closeSession() {
+
 		session.close();
 	}
 
 	public static void beginTransaction() {
+
 		session.beginTransaction();
 	}
 
 	public static void commitTransaction() {
+
 		session.getTransaction().commit();
 	}
 
@@ -47,8 +49,9 @@ public class HibernateUtil {
 			session.getTransaction().rollback();
 		}
 	}
-	
-	public static Session getSession(){
+
+	public static Session getSession() {
+
 		return session;
 	}
 

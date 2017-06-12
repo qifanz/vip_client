@@ -6,6 +6,7 @@
 package fr.insalyon.creatis.vip.cli.control;
 
 import fr.insalyon.creatis.vip.cli.model.HibernateUtil;
+import fr.insalyon.creatis.vip.cli.model.InfoExecutionDAO;
 import fr.insalyon.creatis.vip.cli.vue.UtilIO;
 import fr.insalyon.creatis.vip.java_client.ApiClient;
 import fr.insalyon.creatis.vip.java_client.api.DefaultApi;
@@ -30,27 +31,23 @@ public class Controller {
 		client.setBasePath("http://vip.creatis.insa-lyon.fr/rest");
 		client.setApiKey(apiKeyValue);
 		DefaultApi api = new DefaultApi(client);
-		
-		//Hibernate initialization
+
+		// Hibernate initialization
 		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
 		HibernateUtil.init();
 
-		
 		if ((arguments.getAction()).equals("execute")) {
 			InitAndExecuteControl initAndExecuteControl = new InitAndExecuteControl(api, arguments);
-			
+
 			UtilIO.printResultatExecute(initAndExecuteControl.execute(), initAndExecuteControl.getRepertoire());
 		} else if ((arguments.getAction()).equals("status")) {
 			GetExecutionControl getExecutionControl = new GetExecutionControl(api, arguments);
+
 			UtilIO.printExecutionDetial(getExecutionControl.execute());
 
 		} else if ((arguments.getAction()).equals("executions")) {
-			HibernateUtil.openSession();
-			Query query = HibernateUtil.getSession().createQuery("Select e from InfoExecution e");
-			for (Object info:query.list()){
-				System.out.println(info);
-			}
-			HibernateUtil.closeSession();
+			InfoExecutionDAO infoDao = new InfoExecutionDAO();
+			UtilIO.printListInfoExecutions(infoDao.getAllExecutions());
 		}
 
 		HibernateUtil.close();

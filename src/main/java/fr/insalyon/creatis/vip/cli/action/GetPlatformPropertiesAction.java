@@ -27,8 +27,7 @@ public class GetPlatformPropertiesAction implements Action<PlatformProperties>{
 
 	@Override
 	public PlatformProperties execute(DefaultApi api) throws ApiException {
-		PlatformProperties result=api.getPlatformProperties();
-        return result;
+        return api.getPlatformProperties();
 	}
     
 

@@ -29,7 +29,8 @@ public class InfoExecution implements Serializable {
 	private String repersitory;
 	@Column(name = "StartDate")
 	private Long startdate;
-
+	
+	
 	public InfoExecution() {
 
 	}

@@ -12,6 +12,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 	<dependencies>
+
 		<dependency>
 			<groupId>fr.insalyon.creatis.vip</groupId>
 			<artifactId>java-client</artifactId>
@@ -31,6 +32,11 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.4.195</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.0.13</version>
 		</dependency>
 	</dependencies>
 	<build>

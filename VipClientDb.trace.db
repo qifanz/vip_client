@@ -478,3 +478,11 @@ org.h2.jdbc.JdbcSQLException: The object is already closed [90007-195]
 org.h2.jdbc.JdbcSQLException: The object is already closed [90007-195]
 2017-06-09 15:11:21 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLException: The object is already closed [90007-195]
+2017-06-09 16:17:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-195]
+2017-06-12 09:57:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-195]
+2017-06-12 10:07:33 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-195]
+2017-06-12 11:16:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-195]

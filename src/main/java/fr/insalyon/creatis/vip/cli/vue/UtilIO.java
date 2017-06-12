@@ -5,7 +5,6 @@ import static java.lang.System.exit;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -19,36 +18,32 @@ import fr.insalyon.creatis.vip.java_client.model.PlatformProperties;
 
 public class UtilIO {
 
-	private static BufferedReader bufferedReader;
-
 	public static String GetApiKey(File apiKeyFile) {
 		String apiKeyValue = "";
 		try {
 			InputStreamReader read = new InputStreamReader(new FileInputStream(apiKeyFile));
-			bufferedReader = new BufferedReader(read);
+			BufferedReader bufferedReader = new BufferedReader(read);
 			try {
 				apiKeyValue = bufferedReader.readLine();
 			} catch (IOException ex) {
-				// Logger.getLogger(Vue.class.getName()).log(Level.SEVERE, null,
-				// ex);
 				System.err.println("Error in the key file");
+				bufferedReader.close();
 				exit(0);
-
 			}
-		} catch (FileNotFoundException ex) {
+			bufferedReader.close();
+		} catch (IOException ex) {
 			// Logger.getLogger(Vue.class.getName()).log(Level.SEVERE, null,
 			// ex);
 			System.err.println("Key file not found.");
 			exit(0);
 		}
+
 		return apiKeyValue;
 	}
 
 	public static void printResultatExecute(Execution execution, String repertoire) {
+
 		
-		InfoExecution infoExecution=new InfoExecution(execution.getIdentifier(),execution.getPipelineIdentifier(),execution.getStatus().toString(),repertoire,execution.getStartDate());
-		InfoExecutionDAO infoDAO=new InfoExecutionDAO();
-		infoDAO.persist(infoExecution);
 		PrintWriter writer = new PrintWriter(System.out);
 		writer.println("identifier: " + execution.getIdentifier());
 		writer.println("directory: " + repertoire);
@@ -57,30 +52,34 @@ public class UtilIO {
 	}
 
 	public static void printExecutionDetial(Execution execution) {
-		InfoExecutionDAO infoDAO=new InfoExecutionDAO();
-		infoDAO.upadteStatusByExecutionId(execution.getIdentifier(), execution.getStatus().toString());
 		
-		
+
 		PrintWriter writer = new PrintWriter(System.out);
 		writer.println(execution.getStatus());
 		writer.close();
 
 	}
 	
-	
-	public static void printPlatformProperties (PlatformProperties platformproperty){
+	public static void printListInfoExecutions(List<InfoExecution> listExecution) {
+		for (InfoExecution info:listExecution) {
+			System.out.println(info);
+		}
+		
+	}
+
+	public static void printPlatformProperties(PlatformProperties platformproperty) {
 		System.out.println("Platform name: " + platformproperty.getPlatformName());
 		System.out.println("Platform description: " + platformproperty.getPlatformDescription());
 		System.out.println("Api version supported: " + platformproperty.getSupportedAPIVersion());
 		System.out.println("Contact email: " + platformproperty.getEmail());
 	}
-	
-	public static void printPipelinesList(List<Pipeline> pipelinesList){
+
+	public static void printPipelinesList(List<Pipeline> pipelinesList) {
 		for (Pipeline pipeline : pipelinesList) {
-			
+
 			System.out.println("Name: " + pipeline.getName());
 			System.out.println("Version: " + pipeline.getVersion());
-			System.out.println("Can execute: " + pipeline.getCanExecute()+"\r\n");
+			System.out.println("Can execute: " + pipeline.getCanExecute() + "\r\n");
 		}
 	}
 }
