@@ -48,6 +48,9 @@ public class Controller {
 		} else if ((arguments.getAction()).equals("executions")) {
 			InfoExecutionDAO infoDao = new InfoExecutionDAO();
 			UtilIO.printListInfoExecutions(infoDao.getAllExecutions());
+		} else if((arguments.getAction()).equals("download")) {
+			DownloadControl downloadControl=new DownloadControl(api, arguments);
+			downloadControl.execute();
 		}
 
 		HibernateUtil.close();

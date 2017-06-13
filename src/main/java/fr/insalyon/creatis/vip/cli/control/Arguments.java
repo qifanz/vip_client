@@ -26,7 +26,11 @@ public class Arguments {
 			action = "status";
 		} else if (args[0].equals("executions")) {
 			action = "executions";
-		} else {
+		} else if (args[0].equals("download")){
+			action="download";
+			
+		}
+		else {
 			System.err.println("Option not correct");
 			exit(0);
 		}

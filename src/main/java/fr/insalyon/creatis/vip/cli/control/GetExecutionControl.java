@@ -2,8 +2,7 @@ package fr.insalyon.creatis.vip.cli.control;
 
 import static java.lang.System.exit;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 import fr.insalyon.creatis.vip.cli.action.GetExecutionAction;
 import fr.insalyon.creatis.vip.cli.model.InfoExecutionDAO;
@@ -12,7 +11,7 @@ import fr.insalyon.creatis.vip.java_client.api.DefaultApi;
 import fr.insalyon.creatis.vip.java_client.model.Execution;
 
 public class GetExecutionControl {
-	 private static Logger log = LoggerFactory.getLogger(GetExecutionControl.class);  
+	
 	Arguments args;
 	DefaultApi api;
 	public GetExecutionControl(DefaultApi api,Arguments args) {
@@ -35,7 +34,7 @@ public class GetExecutionControl {
 		} catch (ApiException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			log.error("",e);
+
 			System.err.println("Exception："+e.getMessage());
 			exit(0);
 		}

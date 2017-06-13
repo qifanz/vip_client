@@ -6,9 +6,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import fr.insalyon.creatis.vip.cli.action.InitAndExecuteAction;
 import fr.insalyon.creatis.vip.cli.model.InfoExecution;
 import fr.insalyon.creatis.vip.cli.model.InfoExecutionDAO;
@@ -17,7 +14,7 @@ import fr.insalyon.creatis.vip.java_client.api.DefaultApi;
 import fr.insalyon.creatis.vip.java_client.model.Execution;
 
 public class InitAndExecuteControl {
-	 private static Logger log = LoggerFactory.getLogger(InitAndExecuteControl.class);  
+	 
 	private DefaultApi api;
 	private Arguments args;
 	private String repertoire;
@@ -52,7 +49,7 @@ public class InitAndExecuteControl {
 		} catch (ApiException e) {
 			
 		//	e.printStackTrace();
-			log.error("",e);
+			
 			System.err.println("Exception："+e.getMessage());
 			exit(0);
 		}
