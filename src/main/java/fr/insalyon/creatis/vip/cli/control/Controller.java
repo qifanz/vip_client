@@ -12,7 +12,6 @@ import fr.insalyon.creatis.vip.java_client.ApiClient;
 import fr.insalyon.creatis.vip.java_client.api.DefaultApi;
 import java.io.File;
 import java.util.logging.Level;
-import org.hibernate.Query;
 
 /**
  *
@@ -49,8 +48,8 @@ public class Controller {
 			InfoExecutionDAO infoDao = new InfoExecutionDAO();
 			UtilIO.printListInfoExecutions(infoDao.getAllExecutions());
 		} else if((arguments.getAction()).equals("download")) {
-			DownloadControl downloadControl=new DownloadControl(api, arguments);
-			downloadControl.execute();
+			GetResultControl getResultControl =new GetResultControl(api, arguments);
+			UtilIO.downloadFile(getResultControl.execute());
 		}
 
 		HibernateUtil.close();
