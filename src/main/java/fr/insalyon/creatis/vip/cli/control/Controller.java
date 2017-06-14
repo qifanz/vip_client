@@ -33,7 +33,7 @@ public class Controller {
         File apiKeyFile = new File("../ApiKey.txt");
         String apiKeyValue = UtilIO.GetApiKey(apiKeyFile);
         ApiClient client = new ApiClient();
-        client.setBasePath("http://vip.creatis.insa-lyon.fr/rest");
+        client.setBasePath("http://vip.creatis.insa-lyon.fr:4040/rest-test/rest");
         client.setApiKey(apiKeyValue);
         DefaultApi api = new DefaultApi(client);
 
