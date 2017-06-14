@@ -66,10 +66,10 @@ public class Controller {
             } else if ((arguments.getAction()).equals("executions")) {
                 InfoExecutionDAO infoDao = new InfoExecutionDAO();
                 UtilIO.printListInfoExecutions(infoDao.getAllExecutions());
-            } else if((arguments.getAction()).equals("download")) {
-            GetResultAction getResultAction =new GetResultAction(api, arguments);
-            getResultAction.execute();
-            UtilIO.downloadFile(getResultAction.execute());
+            } else if ((arguments.getAction()).equals("download")) {
+                GetResultAction getResultAction = new GetResultAction(api, arguments);
+                getResultAction.execute();
+                UtilIO.downloadFile(getResultAction.execute(),arguments.getListArgs().get(""));
             }
 
         } catch (ApiException e) {
@@ -78,6 +78,6 @@ public class Controller {
         } finally {
             HibernateUtil.close();
         }
-        }
-
     }
+
+}

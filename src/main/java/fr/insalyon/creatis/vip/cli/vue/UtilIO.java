@@ -80,7 +80,7 @@ public class UtilIO {
         }
     }
 
-    public static void downloadFile(List<String> urls) {
+    public static void downloadFile(List<String> urls,String dest) {
 
 
         try {
@@ -93,7 +93,7 @@ public class UtilIO {
                 InputStream response = httpConnection.getInputStream();
 
                 InputStream decodedResponse = Base64.getDecoder().wrap(response);
-                File file=new File(url.substring(url.lastIndexOf('/')+1));
+                File file=new File(dest+url.substring(url.lastIndexOf('/')+1));
                 file.createNewFile();
                 OutputStream outputStream =
                         new FileOutputStream(file);
