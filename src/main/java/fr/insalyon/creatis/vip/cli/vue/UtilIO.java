@@ -93,8 +93,10 @@ public class UtilIO {
                 InputStream response = httpConnection.getInputStream();
 
                 InputStream decodedResponse = Base64.getDecoder().wrap(response);
+                File file=new File(url.substring(url.lastIndexOf('/')));
+                file.createNewFile();
                 OutputStream outputStream =
-                        new FileOutputStream(new File(url.substring(url.lastIndexOf('/'))));
+                        new FileOutputStream(file);
 
                 int read = 0;
                 byte[] bytes = new byte[1024];
