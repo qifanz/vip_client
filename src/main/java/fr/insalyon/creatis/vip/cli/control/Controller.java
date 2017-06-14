@@ -69,7 +69,11 @@ public class Controller {
             } else if ((arguments.getAction()).equals("download")) {
                 GetResultAction getResultAction = new GetResultAction(api, arguments);
                 getResultAction.execute();
-                UtilIO.downloadFile(getResultAction.execute(),arguments.getListArgs().get(""));
+                if (arguments.getListArgs().get("dest")==null) {
+                    UtilIO.downloadFile(getResultAction.execute(),"");
+                }else {
+                    UtilIO.downloadFile(getResultAction.execute(), arguments.getListArgs().get("dest"));
+                }
             }
 
         } catch (ApiException e) {
