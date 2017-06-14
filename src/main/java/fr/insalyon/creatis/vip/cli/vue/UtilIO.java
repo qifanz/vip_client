@@ -93,12 +93,17 @@ public class UtilIO {
                 InputStream response = httpConnection.getInputStream();
 
                 InputStream decodedResponse = Base64.getDecoder().wrap(response);
-                String result = "";
-                int tmp;
-                while ((tmp = decodedResponse.read()) != -1) {
-                    result += (char) tmp;
+                OutputStream outputStream =
+                        new FileOutputStream(new File(url.substring(url.lastIndexOf('/'))));
+
+                int read = 0;
+                byte[] bytes = new byte[1024];
+
+                while ((read = decodedResponse.read(bytes)) != -1) {
+                    outputStream.write(bytes, 0, read);
                 }
-                System.out.println(result);
+
+                System.out.println("Done!");
             }
 
         } catch (IOException e) {

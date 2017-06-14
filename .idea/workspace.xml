@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb2bc0e2-2f58-4376-a9b0-e7a0a2a9b99c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/action/GetResultAction.java" afterPath="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/action/GetResultAction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/vue/UtilIO.java" afterPath="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/vue/UtilIO.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -43,8 +41,8 @@
       <file leaf-file-name="UtilIO.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/vue/UtilIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="101" column="13" lean-forward="false" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
+            <state relative-caret-position="437">
+              <caret line="96" column="86" lean-forward="false" selection-start-line="96" selection-start-column="86" selection-end-line="96" selection-end-column="86" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -969,8 +967,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/vue/UtilIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="101" column="13" lean-forward="false" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
+        <state relative-caret-position="437">
+          <caret line="96" column="86" lean-forward="false" selection-start-line="96" selection-start-column="86" selection-end-line="96" selection-end-column="86" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
