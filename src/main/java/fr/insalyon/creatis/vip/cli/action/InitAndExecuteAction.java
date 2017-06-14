@@ -16,7 +16,7 @@ import fr.insalyon.creatis.vip.java_client.model.PipelineParameter;
 
 public class InitAndExecuteAction implements Action<Execution> {
 
-	Execution execution;
+	private Execution execution;
 	private DefaultApi api;
 	private Arguments args;
 	private String repertoire;

@@ -5,6 +5,7 @@ import static java.lang.System.exit;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Base64;
 import java.util.List;
 
 import fr.insalyon.creatis.vip.cli.model.InfoExecution;
@@ -90,9 +91,11 @@ public class UtilIO {
             httpConnection.setRequestMethod("GET");
             httpConnection.setRequestProperty("apiKey",apiKeyValue);
             InputStream response = httpConnection.getInputStream();
+
+            InputStream decodedResponse=Base64.getDecoder().wrap(response);
             String result="";
             int tmp;
-            while((tmp = response.read()) != -1){
+            while((tmp = decodedResponse.read()) != -1){
                 result += (char)tmp;
             }
             System.out.println(result);
