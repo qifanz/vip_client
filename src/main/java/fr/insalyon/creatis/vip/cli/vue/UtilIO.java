@@ -3,21 +3,19 @@ package fr.insalyon.creatis.vip.cli.vue;
 import static java.lang.System.exit;
 
 import java.io.*;
-import java.net.MalformedURLException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
 import fr.insalyon.creatis.vip.cli.model.InfoExecution;
-import fr.insalyon.creatis.vip.cli.model.InfoExecutionDAO;
 import fr.insalyon.creatis.vip.java_client.model.Execution;
 import fr.insalyon.creatis.vip.java_client.model.Pipeline;
 import fr.insalyon.creatis.vip.java_client.model.PlatformProperties;
-import org.apache.commons.io.FileUtils;
 
 public class UtilIO {
-
+    public static String apiKeyValue = "";
     public static String GetApiKey(File apiKeyFile) {
-        String apiKeyValue = "";
+
         try {
             InputStreamReader read = new InputStreamReader(new FileInputStream(apiKeyFile));
             BufferedReader bufferedReader = new BufferedReader(read);
@@ -81,14 +79,24 @@ public class UtilIO {
         }
     }
 
-    public static void downloadFile(String address) {
-        URL url = null;
+    public static void downloadFile(String url) {
+
+
         try {
-            url = new URL(address);
-            File file=new File("test.txt");
-            FileUtils.copyURLToFile(url,file);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+
+            URL fileUrl=new URL(url);
+            System.out.println(url);
+            HttpURLConnection httpConnection = (HttpURLConnection) fileUrl.openConnection();
+            httpConnection.setRequestMethod("GET");
+            httpConnection.setRequestProperty("apiKey",apiKeyValue);
+            InputStream response = httpConnection.getInputStream();
+            String result="";
+            int tmp;
+            while((tmp = response.read()) != -1){
+                result += (char)tmp;
+            }
+            System.out.println(result);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -17,6 +17,7 @@ import java.util.List;
 public class GetPipelineAction implements Action<Pipeline>{
     String pipelineName;
     String pipelineIdentifier;
+    DefaultApi api;
     
 
     public GetPipelineAction(String name) {
@@ -24,7 +25,7 @@ public class GetPipelineAction implements Action<Pipeline>{
     }
 
     
-    public Pipeline execute(DefaultApi api) throws ApiException{
+    public Pipeline execute() throws ApiException{
         List<Pipeline> listPipelines=api.listPipelines("");
         for (Pipeline pipeline:listPipelines) {
             if (pipeline.getName().equals(pipelineName)) {

@@ -16,7 +16,7 @@ import fr.insalyon.creatis.vip.java_client.model.PlatformProperties;
  * @author qzhang
  */
 public class GetPlatformPropertiesAction implements Action<PlatformProperties>{
-   
+    DefaultApi api;
   
     
     public GetPlatformPropertiesAction(){
@@ -26,7 +26,7 @@ public class GetPlatformPropertiesAction implements Action<PlatformProperties>{
   
 
 	@Override
-	public PlatformProperties execute(DefaultApi api) throws ApiException {
+	public PlatformProperties execute() throws ApiException {
         return api.getPlatformProperties();
 	}
     

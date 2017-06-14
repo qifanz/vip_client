@@ -16,7 +16,7 @@ public interface  Action<T> {
     
 
     
-    T execute(DefaultApi api) throws ApiException;
+    T execute() throws ApiException;
     
 
 }
