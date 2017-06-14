@@ -73,8 +73,8 @@ public class Controller {
             }
 
         } catch (ApiException e) {
-            HibernateUtil.cancelTransaction();
-            e.printStackTrace();
+            //HibernateUtil.cancelTransaction();
+            System.err.println(e.getResponseBody());
         } finally {
             HibernateUtil.close();
         }
