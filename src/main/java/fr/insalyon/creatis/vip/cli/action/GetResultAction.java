@@ -1,5 +1,6 @@
 package fr.insalyon.creatis.vip.cli.action;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ import fr.insalyon.creatis.vip.cli.model.InfoExecutionDAO;
 import fr.insalyon.creatis.vip.java_client.ApiException;
 import fr.insalyon.creatis.vip.java_client.api.DefaultApi;
 
-public class GetResultAction implements Action<String>{
+public class GetResultAction implements Action<List<String>>{
 
 	private String executionId;
 	Arguments args;
@@ -29,12 +30,16 @@ public class GetResultAction implements Action<String>{
 		}
 	}
 	@Override
-	public String execute() throws ApiException {
+	public List<String> execute() throws ApiException {
 		Map<String,List<String>> returnedFiles=api.getExecution(executionId).getReturnedFiles();
-		String url=returnedFiles.get("output_file").get(0);
-		String base="http://vip.creatis.insa-lyon.fr:4040/rest-test/rest/path/content?uri=vip://vip.creatis.insa-lyon.fr/vip/Home";
-		int pos=url.indexOf('/',13);
-		return base+url.substring(pos);
+        List<String> urls=returnedFiles.get("output_file");
+        List<String> usableUrls=new ArrayList<>();
+        String base="http://vip.creatis.insa-lyon.fr:4040/rest-test/rest/path/content?uri=vip://vip.creatis.insa-lyon.fr/vip/Home";
+        for (String url:urls) {
+            int pos = url.indexOf('/', 13);
+            usableUrls.add(base + url.substring(pos));
+        }
+        return usableUrls;
 	}
 
 }

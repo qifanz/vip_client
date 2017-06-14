@@ -80,25 +80,26 @@ public class UtilIO {
         }
     }
 
-    public static void downloadFile(String url) {
+    public static void downloadFile(List<String> urls) {
 
 
         try {
+            for (String url:urls) {
+                URL fileUrl = new URL(url);
+                System.out.println(url);
+                HttpURLConnection httpConnection = (HttpURLConnection) fileUrl.openConnection();
+                httpConnection.setRequestMethod("GET");
+                httpConnection.setRequestProperty("apiKey", apiKeyValue);
+                InputStream response = httpConnection.getInputStream();
 
-            URL fileUrl=new URL(url);
-            System.out.println(url);
-            HttpURLConnection httpConnection = (HttpURLConnection) fileUrl.openConnection();
-            httpConnection.setRequestMethod("GET");
-            httpConnection.setRequestProperty("apiKey",apiKeyValue);
-            InputStream response = httpConnection.getInputStream();
-
-            InputStream decodedResponse=Base64.getDecoder().wrap(response);
-            String result="";
-            int tmp;
-            while((tmp = decodedResponse.read()) != -1){
-                result += (char)tmp;
+                InputStream decodedResponse = Base64.getDecoder().wrap(response);
+                String result = "";
+                int tmp;
+                while ((tmp = decodedResponse.read()) != -1) {
+                    result += (char) tmp;
+                }
+                System.out.println(result);
             }
-            System.out.println(result);
 
         } catch (IOException e) {
             e.printStackTrace();
