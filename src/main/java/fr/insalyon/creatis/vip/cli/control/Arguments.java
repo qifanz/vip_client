@@ -8,7 +8,8 @@ import java.util.Map;
 import static java.lang.System.exit;
 
 public class Arguments {
-    private Map<String, List<String>> listArgs;
+    private Map<String, List<String>> argsWithFlag;
+    private List<String> argsWithoutFlag;
 
     private String action;
 
@@ -18,7 +19,8 @@ public class Arguments {
             exit(0);
         }
 
-        listArgs = new HashMap<>();
+        argsWithFlag = new HashMap<>();
+        argsWithoutFlag= new ArrayList<>();
         switch (args[0]) {
             case "execute":
                 action = "execute";
@@ -38,21 +40,15 @@ public class Arguments {
 
         int it = 1;
         while (it < args.length) {
-            if (!args[it].substring(0, 2).equals("--")) {
+            if (args[it].length()<2||!args[it].substring(0, 2).equals("--")) {
 
-                if (listArgs.containsKey("")) {
-                    listArgs.get("").add(args[it]);
-                } else {
-                    List<String> param = new ArrayList<>();
-                    param.add(args[it]);
-                    listArgs.put("", param);
-                }
+                argsWithoutFlag.add(args[it]);
                 it++;
             } else if (args[it].substring(0, 2).equals("--") && (it + 1) < args.length
                     && !args[it + 1].substring(0, 1).equals("--")) {
                 List<String> param = new ArrayList<>();
                 param.add(args[it + 1]);
-                listArgs.put(args[it].substring(2), param);
+                argsWithFlag.put(args[it].substring(2), param);
                 it += 2;
 
             } else {
@@ -63,9 +59,11 @@ public class Arguments {
 
     }
 
-    public Map<String, List<String>> getListArgs() {
-        return listArgs;
+    public Map<String, List<String>> getArgsWithFlag() {
+        return argsWithFlag;
     }
+
+    public List<String> getArgsWithoutFlag(){return argsWithoutFlag;}
 
     public String getAction() {
         return action;

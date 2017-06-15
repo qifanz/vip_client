@@ -6,7 +6,7 @@ import java.util.Map;
 
 import fr.insalyon.creatis.vip.cli.control.Arguments;
 import fr.insalyon.creatis.vip.cli.control.Controller;
-import fr.insalyon.creatis.vip.cli.model.InfoExecutionDAO;
+import fr.insalyon.creatis.vip.cli.dao.InfoExecutionDAO;
 import fr.insalyon.creatis.vip.java_client.ApiException;
 import fr.insalyon.creatis.vip.java_client.api.DefaultApi;
 
@@ -22,10 +22,9 @@ public class GetResultAction implements Action<List<String>>{
 	}
 
 	private void setExecutionId() {
-        List<String> id=args.getListArgs().get("");
-        if (id!=null) {
-            executionId=id.get(0);
-        } else {
+        try{
+            executionId=args.getArgsWithoutFlag().get(0);
+        } catch (IndexOutOfBoundsException e) {
             InfoExecutionDAO infoDao=new InfoExecutionDAO();
             executionId=infoDao.getLastExecution().getExecutionIdentifier();
         }

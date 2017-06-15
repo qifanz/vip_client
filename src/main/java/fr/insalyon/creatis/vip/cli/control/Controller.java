@@ -8,9 +8,9 @@ package fr.insalyon.creatis.vip.cli.control;
 import fr.insalyon.creatis.vip.cli.action.GetExecutionAction;
 import fr.insalyon.creatis.vip.cli.action.GetResultAction;
 import fr.insalyon.creatis.vip.cli.action.InitAndExecuteAction;
-import fr.insalyon.creatis.vip.cli.model.HibernateUtil;
+import fr.insalyon.creatis.vip.cli.dao.HibernateUtil;
 import fr.insalyon.creatis.vip.cli.model.InfoExecution;
-import fr.insalyon.creatis.vip.cli.model.InfoExecutionDAO;
+import fr.insalyon.creatis.vip.cli.dao.InfoExecutionDAO;
 import fr.insalyon.creatis.vip.cli.vue.UtilIO;
 import fr.insalyon.creatis.vip.java_client.ApiClient;
 import fr.insalyon.creatis.vip.java_client.ApiException;
@@ -18,7 +18,6 @@ import fr.insalyon.creatis.vip.java_client.api.DefaultApi;
 import fr.insalyon.creatis.vip.java_client.model.Execution;
 
 import java.io.File;
-import java.util.List;
 import java.util.logging.Level;
 
 import static java.lang.System.exit;
@@ -27,7 +26,7 @@ import static java.lang.System.exit;
  * @author qzhang
  */
 public class Controller {
-    public final static String base = "http://vip.creatis.insa-lyon.fr:4040/rest-test/rest";
+    public final static String base = "http://vip.creatis.insa-lyon.fr/rest";
 
     public static void main(String args[]) {
 
@@ -48,8 +47,6 @@ public class Controller {
             switch ((arguments.getAction())) {
                 case "execute": {
                     InitAndExecuteAction initAndExecuteAction = new InitAndExecuteAction(api, arguments);
-
-
                     Execution execution = initAndExecuteAction.execute();
                     UtilIO.printExecuteResult(execution, initAndExecuteAction.getRepertoire());
                     InfoExecution infoExecution = new InfoExecution(execution.getIdentifier(), execution.getPipelineIdentifier(),
@@ -72,7 +69,7 @@ public class Controller {
                     break;
                 case "download":
                     GetResultAction getResultAction = new GetResultAction(api, arguments);
-                    UtilIO.downloadFile(getResultAction.execute(),arguments.getListArgs().get("").get(arguments.getListArgs().size()));
+                    UtilIO.downloadFile(getResultAction.execute(),arguments.getArgsWithoutFlag().get(arguments.getArgsWithoutFlag().size()));
                     break;
                 case "incorrect":
                     System.err.println("Option not correct.");

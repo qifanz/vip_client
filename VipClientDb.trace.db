@@ -34,7 +34,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:178)
 	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1885)
 	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1843)
-	at fr.insalyon.creatis.vip.cli.model.HibernateUtil.init(HibernateUtil.java:17)
+	at fr.insalyon.creatis.vip.cli.dao.HibernateUtil.init(HibernateUtil.java:17)
 	at fr.insalyon.creatis.vip.cli.control.Controller.main(Controller.java:44)
 Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/qifan/GitHub/vip_client/VipClientDb.mv.db [1.4.195/7]" [50000-195]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
@@ -80,7 +80,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:178)
 	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1885)
 	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1843)
-	at fr.insalyon.creatis.vip.cli.model.HibernateUtil.init(HibernateUtil.java:17)
+	at fr.insalyon.creatis.vip.cli.dao.HibernateUtil.init(HibernateUtil.java:17)
 	at fr.insalyon.creatis.vip.cli.control.Controller.main(Controller.java:44)
 Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/qifan/GitHub/vip_client/VipClientDb.mv.db [1.4.195/7]" [50000-195]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
@@ -132,7 +132,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:178)
 	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1885)
 	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1843)
-	at fr.insalyon.creatis.vip.cli.model.HibernateUtil.init(HibernateUtil.java:17)
+	at fr.insalyon.creatis.vip.cli.dao.HibernateUtil.init(HibernateUtil.java:17)
 	at fr.insalyon.creatis.vip.cli.control.Controller.main(Controller.java:44)
 Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/qifan/GitHub/vip_client/VipClientDb.mv.db [1.4.195/7]" [50000-195]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
@@ -184,7 +184,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:178)
 	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1885)
 	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1843)
-	at fr.insalyon.creatis.vip.cli.model.HibernateUtil.init(HibernateUtil.java:17)
+	at fr.insalyon.creatis.vip.cli.dao.HibernateUtil.init(HibernateUtil.java:17)
 	at fr.insalyon.creatis.vip.cli.control.Controller.main(Controller.java:44)
 Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/qifan/GitHub/vip_client/VipClientDb.mv.db [1.4.195/7]" [50000-195]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
@@ -230,7 +230,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:178)
 	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1885)
 	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1843)
-	at fr.insalyon.creatis.vip.cli.model.HibernateUtil.init(HibernateUtil.java:17)
+	at fr.insalyon.creatis.vip.cli.dao.HibernateUtil.init(HibernateUtil.java:17)
 	at fr.insalyon.creatis.vip.cli.control.Controller.main(Controller.java:44)
 Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/qifan/GitHub/vip_client/VipClientDb.mv.db [1.4.195/7]" [50000-195]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
@@ -276,7 +276,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:178)
 	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1885)
 	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1843)
-	at fr.insalyon.creatis.vip.cli.model.HibernateUtil.init(HibernateUtil.java:21)
+	at fr.insalyon.creatis.vip.cli.dao.HibernateUtil.init(HibernateUtil.java:21)
 	at fr.insalyon.creatis.vip.cli.control.Controller.main(Controller.java:44)
 Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/qifan/GitHub/vip_client/VipClientDb.mv.db [1.4.195/7]" [50000-195]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
@@ -322,7 +322,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:178)
 	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1885)
 	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1843)
-	at fr.insalyon.creatis.vip.cli.model.HibernateUtil.init(HibernateUtil.java:21)
+	at fr.insalyon.creatis.vip.cli.dao.HibernateUtil.init(HibernateUtil.java:21)
 	at fr.insalyon.creatis.vip.cli.control.Controller.main(Controller.java:44)
 Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/qifan/GitHub/vip_client/VipClientDb.mv.db [1.4.195/7]" [50000-195]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
@@ -368,7 +368,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:178)
 	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1885)
 	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1843)
-	at fr.insalyon.creatis.vip.cli.model.HibernateUtil.init(HibernateUtil.java:21)
+	at fr.insalyon.creatis.vip.cli.dao.HibernateUtil.init(HibernateUtil.java:21)
 	at fr.insalyon.creatis.vip.cli.control.Controller.main(Controller.java:44)
 Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/qifan/GitHub/vip_client/VipClientDb.mv.db [1.4.195/7]" [50000-195]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
@@ -414,7 +414,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:178)
 	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1885)
 	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1843)
-	at fr.insalyon.creatis.vip.cli.model.HibernateUtil.init(HibernateUtil.java:21)
+	at fr.insalyon.creatis.vip.cli.dao.HibernateUtil.init(HibernateUtil.java:21)
 	at fr.insalyon.creatis.vip.cli.control.Controller.main(Controller.java:44)
 Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/qifan/GitHub/vip_client/VipClientDb.mv.db [1.4.195/7]" [50000-195]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
@@ -462,7 +462,7 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:178)
 	at org.hibernate.cfg.Configuration.buildTypeRegistrations(Configuration.java:1885)
 	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1843)
-	at fr.insalyon.creatis.vip.cli.model.HibernateUtil.init(HibernateUtil.java:21)
+	at fr.insalyon.creatis.vip.cli.dao.HibernateUtil.init(HibernateUtil.java:21)
 	at fr.insalyon.creatis.vip.cli.control.Controller.main(Controller.java:45)
 Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/qifan/GitHub/vip_client/VipClientDb.mv.db [1.4.195/7]" [50000-195]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)

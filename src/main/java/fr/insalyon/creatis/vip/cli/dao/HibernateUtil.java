@@ -1,4 +1,4 @@
-package fr.insalyon.creatis.vip.cli.model;
+package fr.insalyon.creatis.vip.cli.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

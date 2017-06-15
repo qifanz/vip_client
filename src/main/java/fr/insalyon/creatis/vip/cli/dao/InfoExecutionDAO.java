@@ -1,8 +1,10 @@
-package fr.insalyon.creatis.vip.cli.model;
+package fr.insalyon.creatis.vip.cli.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.insalyon.creatis.vip.cli.dao.HibernateUtil;
+import fr.insalyon.creatis.vip.cli.model.InfoExecution;
 import org.hibernate.Query;
 
 public class InfoExecutionDAO {

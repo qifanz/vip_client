@@ -32,17 +32,19 @@ public class InitAndExecuteAction implements Action<Execution> {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd_HHmmss");
 		repertoire = "/vip/Home/" + df.format(new Date());
 		parameters.put("results-directory", repertoire);
-		String pipelineIdentifier = "";
-		for (Map.Entry<String, List<String>> entry : args.getListArgs().entrySet()) {
-			if (entry.getKey().equals("")) {
-				pipelineIdentifier = entry.getValue().get(0);
-			} else {
+		for (Map.Entry<String, List<String>> entry : args.getArgsWithFlag().entrySet()) {
+
 				parameters.put(entry.getKey(), entry.getValue().get(0));
-			}
+
 		}
 		execution=new Execution();
 		execution.setName("vip-cli");
-		execution.setPipelineIdentifier(pipelineIdentifier);
+		try {
+			execution.setPipelineIdentifier(args.getArgsWithoutFlag().get(0));
+		} catch (IndexOutOfBoundsException e) {
+			System.err.println("Pipeline identifier not indicated.");
+			exit(0);
+		}
 		execution.setInputValues(parameters);
 	}
 
