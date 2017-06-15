@@ -18,6 +18,7 @@ import fr.insalyon.creatis.vip.java_client.api.DefaultApi;
 import fr.insalyon.creatis.vip.java_client.model.Execution;
 
 import java.io.File;
+import java.util.List;
 import java.util.logging.Level;
 
 /**
@@ -75,12 +76,8 @@ public class Controller {
                     break;
                 case "download":
                     GetResultAction getResultAction = new GetResultAction(api, arguments);
-                    getResultAction.execute();
-                    if (arguments.getListArgs().get("dest") == null) {
-                        UtilIO.downloadFile(getResultAction.execute(), "");
-                    } else {
-                        UtilIO.downloadFile(getResultAction.execute(), arguments.getListArgs().get("").get(1));
-                    }
+                    UtilIO.downloadFile(getResultAction.execute(),arguments.getListArgs().get("").get(arguments.getListArgs().size()-1));
+
                     break;
             }
 
