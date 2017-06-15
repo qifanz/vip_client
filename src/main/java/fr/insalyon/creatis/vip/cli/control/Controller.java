@@ -24,6 +24,7 @@ import java.util.logging.Level;
  * @author qzhang
  */
 public class Controller {
+    public final static String base = "http://vip.creatis.insa-lyon.fr/rest";
 
     public static void main(String args[]) {
 
@@ -33,7 +34,7 @@ public class Controller {
         File apiKeyFile = new File("../ApiKey.txt");
         String apiKeyValue = UtilIO.GetApiKey(apiKeyFile);
         ApiClient client = new ApiClient();
-        client.setBasePath("http://vip.creatis.insa-lyon.fr:4040/rest-test/rest");
+        client.setBasePath(base);
         client.setApiKey(apiKeyValue);
         DefaultApi api = new DefaultApi(client);
 
@@ -41,39 +42,46 @@ public class Controller {
         java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
         HibernateUtil.init();
         try {
-            if ((arguments.getAction()).equals("execute")) {
-                InitAndExecuteAction initAndExecuteAction = new InitAndExecuteAction(api, arguments);
+            switch ((arguments.getAction())) {
+                case "execute": {
+                    InitAndExecuteAction initAndExecuteAction = new InitAndExecuteAction(api, arguments);
 
 
-                Execution execution = initAndExecuteAction.execute();
-                UtilIO.printResultatExecute(execution, initAndExecuteAction.getRepertoire());
-                InfoExecution infoExecution = new InfoExecution(execution.getIdentifier(), execution.getPipelineIdentifier(),
-                        execution.getStatus().toString(), initAndExecuteAction.getRepertoire(), execution.getStartDate());
-                InfoExecutionDAO infoDAO = new InfoExecutionDAO();
-                infoDAO.persist(infoExecution);
+                    Execution execution = initAndExecuteAction.execute();
+                    UtilIO.printExecuteResult(execution, initAndExecuteAction.getRepertoire());
+                    InfoExecution infoExecution = new InfoExecution(execution.getIdentifier(), execution.getPipelineIdentifier(),
+                            execution.getStatus().toString(), initAndExecuteAction.getRepertoire(), execution.getStartDate());
+                    InfoExecutionDAO infoDAO = new InfoExecutionDAO();
+                    infoDAO.persist(infoExecution);
 
 
-            } else if ((arguments.getAction()).equals("status")) {
-                GetExecutionAction getExecutionAction = new GetExecutionAction(api, arguments);
-
-
-                Execution execution = getExecutionAction.execute();
-                UtilIO.printExecutionDetial(execution);
-                InfoExecutionDAO infoDAO = new InfoExecutionDAO();
-                infoDAO.upadteStatusByExecutionId(execution.getIdentifier(), execution.getStatus().toString());
-
-
-            } else if ((arguments.getAction()).equals("executions")) {
-                InfoExecutionDAO infoDao = new InfoExecutionDAO();
-                UtilIO.printListInfoExecutions(infoDao.getAllExecutions());
-            } else if ((arguments.getAction()).equals("download")) {
-                GetResultAction getResultAction = new GetResultAction(api, arguments);
-                getResultAction.execute();
-                if (arguments.getListArgs().get("dest")==null) {
-                    UtilIO.downloadFile(getResultAction.execute(),"");
-                }else {
-                    UtilIO.downloadFile(getResultAction.execute(), arguments.getListArgs().get("dest"));
+                    break;
                 }
+                case "status": {
+                    GetExecutionAction getExecutionAction = new GetExecutionAction(api, arguments);
+
+
+                    Execution execution = getExecutionAction.execute();
+                    UtilIO.printExecutionDetail(execution);
+                    InfoExecutionDAO infoDAO = new InfoExecutionDAO();
+                    infoDAO.upadteStatusByExecutionId(execution.getIdentifier(), execution.getStatus().toString());
+
+
+                    break;
+                }
+                case "executions":
+                    InfoExecutionDAO infoDao = new InfoExecutionDAO();
+                    UtilIO.printListInfoExecutions(infoDao.getAllExecutions());
+                    break;
+                case "download":
+                    GetResultAction getResultAction = new GetResultAction(api, arguments);
+                    getResultAction.execute();
+                    if (arguments.getListArgs().get("dest") == null) {
+                        UtilIO.downloadFile(getResultAction.execute(), "");
+                    } else {
+                        UtilIO.downloadFile(getResultAction.execute(), arguments.getListArgs().get("").get(1));
+                    }
+                    break;
             }
 
         } catch (ApiException e) {

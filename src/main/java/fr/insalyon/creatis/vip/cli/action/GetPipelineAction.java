@@ -15,9 +15,9 @@ import java.util.List;
  * @author qzhang
  */
 public class GetPipelineAction implements Action<Pipeline>{
-    String pipelineName;
-    String pipelineIdentifier;
-    DefaultApi api;
+    private String pipelineName;
+    private String pipelineIdentifier;
+    private DefaultApi api;
     
 
     public GetPipelineAction(String name) {

@@ -6,13 +6,12 @@
 package fr.insalyon.creatis.vip.cli.action;
 
 import fr.insalyon.creatis.vip.java_client.ApiException;
-import fr.insalyon.creatis.vip.java_client.api.DefaultApi;
 
 /**
  *
  * @author qzhang
  */
-public interface  Action<T> {
+interface  Action<T> {
     
 
     

@@ -27,17 +27,17 @@ public class InitAndExecuteAction implements Action<Execution> {
 		setExecution();
 	}
 	
-	public void setExecution(){
-		Map<String, Object> parameters = new HashMap<String, Object>();
+	private void setExecution(){
+		Map<String, Object> parameters = new HashMap<>();
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd_HHmmss");
 		repertoire = "/vip/Home/" + df.format(new Date());
 		parameters.put("results-directory", repertoire);
 		String pipelineIdentifier = "";
-		for (Map.Entry<String, String> entry : args.getListArgs().entrySet()) {
+		for (Map.Entry<String, List<String>> entry : args.getListArgs().entrySet()) {
 			if (entry.getKey().equals("")) {
-				pipelineIdentifier = entry.getValue();
+				pipelineIdentifier = entry.getValue().get(0);
 			} else {
-				parameters.put(entry.getKey(), entry.getValue());
+				parameters.put(entry.getKey(), entry.getValue().get(0));
 			}
 		}
 		execution=new Execution();

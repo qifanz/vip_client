@@ -16,7 +16,7 @@ import fr.insalyon.creatis.vip.java_client.model.PlatformProperties;
  * @author qzhang
  */
 public class GetPlatformPropertiesAction implements Action<PlatformProperties>{
-    DefaultApi api;
+    private DefaultApi api;
   
     
     public GetPlatformPropertiesAction(){

@@ -14,7 +14,7 @@ import fr.insalyon.creatis.vip.java_client.model.Pipeline;
 import fr.insalyon.creatis.vip.java_client.model.PlatformProperties;
 
 public class UtilIO {
-    public static String apiKeyValue = "";
+    private static String apiKeyValue = "";
     public static String GetApiKey(File apiKeyFile) {
 
         try {
@@ -38,7 +38,7 @@ public class UtilIO {
         return apiKeyValue;
     }
 
-    public static void printResultatExecute(Execution execution, String repertoire) {
+    public static void printExecuteResult(Execution execution, String repertoire) {
 
 
         PrintWriter writer = new PrintWriter(System.out);
@@ -48,7 +48,7 @@ public class UtilIO {
 
     }
 
-    public static void printExecutionDetial(Execution execution) {
+    public static void printExecutionDetail(Execution execution) {
 
 
         PrintWriter writer = new PrintWriter(System.out);
@@ -98,7 +98,7 @@ public class UtilIO {
                 OutputStream outputStream =
                         new FileOutputStream(file);
 
-                int read = 0;
+                int read=0;
                 byte[] bytes = new byte[1024];
 
                 while ((read = decodedResponse.read(bytes)) != -1) {

@@ -22,7 +22,7 @@ public class InfoExecutionDAO {
 				.createQuery("Select e from InfoExecution e where ExecutionIdentifier=:id");
 		query.setParameter("id", executionIdentifier);
 
-		List<InfoExecution> listInfos = new ArrayList<InfoExecution>();
+		List<InfoExecution> listInfos = new ArrayList<>();
 		for (Object l : query.list()) {
 			listInfos.add((InfoExecution) l);
 		}
