@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb2bc0e2-2f58-4376-a9b0-e7a0a2a9b99c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/control/Arguments.java" afterPath="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/control/Arguments.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/control/Controller.java" afterPath="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/control/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/vue/UtilIO.java" afterPath="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/vue/UtilIO.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Arguments.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Arguments.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/control/Arguments.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="804">
-              <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+            <state relative-caret-position="464">
+              <caret line="38" column="16" lean-forward="false" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -58,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/control/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="78" column="86" lean-forward="false" selection-start-line="78" selection-start-column="86" selection-end-line="78" selection-end-column="86" />
+            <state relative-caret-position="114">
+              <caret line="49" column="31" lean-forward="true" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -81,8 +83,8 @@
       <file leaf-file-name="GetPlatformPropertiesAction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/action/GetPlatformPropertiesAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+            <state relative-caret-position="352">
+              <caret line="24" column="3" lean-forward="false" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -101,8 +103,8 @@
       <file leaf-file-name="UtilIO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/vue/UtilIO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1744">
-              <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+            <state relative-caret-position="522">
+              <caret line="95" column="74" lean-forward="false" selection-start-line="95" selection-start-column="74" selection-end-line="95" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -150,12 +152,12 @@
         <option value="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/control/GetResultControl.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/model/InfoExecutionDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/vue/UtilIO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/control/Arguments.java" />
         <option value="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/action/InitAndExecuteAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/action/GetExecutionAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/action/GetResultAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/control/Controller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/vue/UtilIO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/control/Arguments.java" />
       </list>
     </option>
   </component>
@@ -664,7 +666,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -993,14 +997,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/action/GetPlatformPropertiesAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/action/GetPipelineAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
@@ -1009,18 +1005,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/control/Arguments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="804">
-          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/action/GetExecutionAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
           <caret line="27" column="9" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="27" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/action/GetPlatformPropertiesAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="24" column="3" lean-forward="false" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -1035,8 +1031,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/vue/UtilIO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1744">
-          <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+        <state relative-caret-position="522">
+          <caret line="95" column="74" lean-forward="false" selection-start-line="95" selection-start-column="74" selection-end-line="95" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1045,8 +1041,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/control/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="78" column="86" lean-forward="false" selection-start-line="78" selection-start-column="86" selection-end-line="78" selection-end-column="86" />
+        <state relative-caret-position="114">
+          <caret line="49" column="31" lean-forward="true" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/fr/insalyon/creatis/vip/cli/control/Arguments.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="38" column="16" lean-forward="false" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
           <folding />
         </state>
       </provider>

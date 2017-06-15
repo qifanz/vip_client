@@ -4,78 +4,72 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import static java.lang.System.exit;
 
 public class Arguments {
-	private Map<String, List<String>> listArgs;
+    private Map<String, List<String>> listArgs;
 
-	public enum Action {
-		EXECUTE, STATUS
-	}
+    private String action;
 
-	private String action;
+    public Arguments(String[] args) {
+        if (args.length == 0) {
+            System.err.println("No option");
+            exit(0);
+        }
 
-	public Arguments(String[] args) {
-		if (args.length == 0) {
-			System.err.println("No option");
-			exit(0);
-		}
+        listArgs = new HashMap<>();
+        switch (args[0]) {
+            case "execute":
+                action = "execute";
+                break;
+            case "status":
+                action = "status";
+                break;
+            case "executions":
+                action = "executions";
+                break;
+            case "download":
+                action = "download";
+                break;
+            default:
+                action = "incorrect";
+        }
 
-		listArgs = new HashMap<>();
-		switch (args[0]) {
-			case "execute":
-				action = "execute";
-				break;
-			case "status":
-				action = "status";
-				break;
-			case "executions":
-				action = "executions";
-				break;
-			case "download":
-				action = "download";
+        int it = 1;
+        while (it < args.length) {
+            if (!args[it].substring(0, 2).equals("--")) {
 
-				break;
-			default:
-				System.err.println("Option not correct");
-				exit(0);
-		}
+                if (listArgs.containsKey("")) {
+                    listArgs.get("").add(args[it]);
+                } else {
+                    List<String> param = new ArrayList<>();
+                    param.add(args[it]);
+                    listArgs.put("", param);
+                }
+                it++;
+            } else if (args[it].substring(0, 2).equals("--") && (it + 1) < args.length
+                    && !args[it + 1].substring(0, 1).equals("--")) {
+                List<String> param = new ArrayList<>();
+                param.add(args[it + 1]);
+                listArgs.put(args[it].substring(2), param);
+                it += 2;
 
-		int it = 1;
-		while (it < args.length) {
-			if (!args[it].substring(0, 2).equals("--")) {
+            } else {
+                System.err.println("no parameter.");
+                exit(0);
+            }
+        }
 
-				if (listArgs.containsKey("")) {
-					listArgs.get("").add(args[it]);
-				} else {
-					List<String> param=new ArrayList<>();
-					param.add(args[it]);
-					listArgs.put("", param);
-				}
-				it++;
-			} else if (args[it].substring(0, 2).equals("--") && (it + 1) < args.length
-					&& !args[it + 1].substring(0, 1).equals("--")) {
-				List<String> param=new ArrayList<>();
-				param.add(args[it+1]);
-				listArgs.put(args[it].substring(2), param);
-				it += 2;
+    }
 
-			} else {
-				System.err.println("no parameter.");
-				exit(0);
-			}
-		}
+    public Map<String, List<String>> getListArgs() {
+        return listArgs;
+    }
 
-	}
-
-	public Map<String, List<String>> getListArgs() {
-		return listArgs;
-	}
-
-	public String getAction() {
-		return action;
-	}
-
+    public String getAction() {
+        return action;
+    }
 
 
 }

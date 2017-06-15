@@ -21,6 +21,8 @@ import java.io.File;
 import java.util.List;
 import java.util.logging.Level;
 
+import static java.lang.System.exit;
+
 /**
  * @author qzhang
  */
@@ -54,20 +56,14 @@ public class Controller {
                             execution.getStatus().toString(), initAndExecuteAction.getRepertoire(), execution.getStartDate());
                     InfoExecutionDAO infoDAO = new InfoExecutionDAO();
                     infoDAO.persist(infoExecution);
-
-
                     break;
                 }
                 case "status": {
                     GetExecutionAction getExecutionAction = new GetExecutionAction(api, arguments);
-
-
                     Execution execution = getExecutionAction.execute();
                     UtilIO.printExecutionDetail(execution);
                     InfoExecutionDAO infoDAO = new InfoExecutionDAO();
                     infoDAO.upadteStatusByExecutionId(execution.getIdentifier(), execution.getStatus().toString());
-
-
                     break;
                 }
                 case "executions":
@@ -77,7 +73,10 @@ public class Controller {
                 case "download":
                     GetResultAction getResultAction = new GetResultAction(api, arguments);
                     UtilIO.downloadFile(getResultAction.execute(),arguments.getListArgs().get("").get(arguments.getListArgs().size()));
-
+                    break;
+                case "incorrect":
+                    System.err.println("Option not correct.");
+                    exit(0);
                     break;
             }
 
