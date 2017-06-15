@@ -25,7 +25,7 @@ import java.util.logging.Level;
  * @author qzhang
  */
 public class Controller {
-    public final static String base = "http://vip.creatis.insa-lyon.fr/rest";
+    public final static String base = "http://vip.creatis.insa-lyon.fr:4040/rest-test/rest";
 
     public static void main(String args[]) {
 
@@ -76,7 +76,7 @@ public class Controller {
                     break;
                 case "download":
                     GetResultAction getResultAction = new GetResultAction(api, arguments);
-                    UtilIO.downloadFile(getResultAction.execute(),arguments.getListArgs().get("").get(arguments.getListArgs().size()-1));
+                    UtilIO.downloadFile(getResultAction.execute(),arguments.getListArgs().get("").get(arguments.getListArgs().size()));
 
                     break;
             }
