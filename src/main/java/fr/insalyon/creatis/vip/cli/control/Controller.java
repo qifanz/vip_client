@@ -8,6 +8,7 @@ package fr.insalyon.creatis.vip.cli.control;
 import fr.insalyon.creatis.vip.cli.action.GetExecutionAction;
 import fr.insalyon.creatis.vip.cli.action.GetResultAction;
 import fr.insalyon.creatis.vip.cli.action.InitAndExecuteAction;
+import fr.insalyon.creatis.vip.cli.action.KillExecutionAction;
 import fr.insalyon.creatis.vip.cli.dao.HibernateUtil;
 import fr.insalyon.creatis.vip.cli.model.InfoExecution;
 import fr.insalyon.creatis.vip.cli.dao.InfoExecutionDAO;
@@ -69,8 +70,11 @@ public class Controller {
                     break;
                 case "download":
                     GetResultAction getResultAction = new GetResultAction(api, arguments);
-                    UtilIO.downloadFile(getResultAction.execute(),arguments.getArgsWithoutFlag().get(arguments.getArgsWithoutFlag().size()));
+                    UtilIO.downloadFile(getResultAction.execute(),getResultAction.getDirectory());
                     break;
+                case "kill":
+                    KillExecutionAction killExecutionAction=new KillExecutionAction(api,arguments);
+                    killExecutionAction.execute();
                 case "incorrect":
                     System.err.println("Option not correct.");
                     exit(0);

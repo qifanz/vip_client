@@ -9,9 +9,12 @@ import fr.insalyon.creatis.vip.cli.dao.InfoExecutionDAO;
 import fr.insalyon.creatis.vip.java_client.ApiException;
 import fr.insalyon.creatis.vip.java_client.api.DefaultApi;
 
+import static java.lang.System.exit;
+
 public class GetResultAction implements Action<List<String>> {
 
     private String executionId;
+    private String directory;
     private Arguments args;
     private DefaultApi api;
 
@@ -19,15 +22,29 @@ public class GetResultAction implements Action<List<String>> {
         this.args = args;
         this.api = api;
         setExecutionId();
+        setDirectory();
+    }
+
+    private void setDirectory() {
+        if (args.getArgsWithoutFlag().size()>=1) {
+            directory=args.getArgsWithoutFlag().get(args.getArgsWithoutFlag().size()-1);
+        } else {
+            System.err.println("Directory missing");
+            exit(0);
+        }
     }
 
     private void setExecutionId() {
         if (args.getArgsWithoutFlag().size()>=2) {
             executionId = args.getArgsWithoutFlag().get(0);
-        } else {
+        } else if (args.getArgsWithoutFlag().size()==1){
             InfoExecutionDAO infoDao = new InfoExecutionDAO();
             executionId = infoDao.getLastExecution().getExecutionIdentifier();
         }
+    }
+
+    public String getDirectory() {
+        return directory;
     }
 
     @Override

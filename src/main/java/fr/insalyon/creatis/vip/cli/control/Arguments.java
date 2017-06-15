@@ -8,7 +8,7 @@ import java.util.Map;
 import static java.lang.System.exit;
 
 public class Arguments {
-    private Map<String, List<String>> argsWithFlag;
+    private Map<String,String> argsWithFlag;
     private List<String> argsWithoutFlag;
 
     private String action;
@@ -34,6 +34,9 @@ public class Arguments {
             case "download":
                 action = "download";
                 break;
+            case "kill":
+                action="kill";
+                break;
             default:
                 action = "incorrect";
         }
@@ -46,20 +49,19 @@ public class Arguments {
                 it++;
             } else if (args[it].substring(0, 2).equals("--") && (it + 1) < args.length
                     && !args[it + 1].substring(0, 1).equals("--")) {
-                List<String> param = new ArrayList<>();
-                param.add(args[it + 1]);
-                argsWithFlag.put(args[it].substring(2), param);
+
+                argsWithFlag.put(args[it].substring(2), args[it + 1]);
                 it += 2;
 
             } else {
-                System.err.println("no parameter.");
+                System.err.println("Error parsing arguments");
                 exit(0);
             }
         }
 
     }
 
-    public Map<String, List<String>> getArgsWithFlag() {
+    public Map<String,String> getArgsWithFlag() {
         return argsWithFlag;
     }
 

@@ -31,9 +31,9 @@ public class InitAndExecuteAction implements Action<Execution> {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd_HHmmss");
 		repertoire = "/vip/Home/" + df.format(new Date());
 		parameters.put("results-directory", repertoire);
-		for (Map.Entry<String, List<String>> entry : args.getArgsWithFlag().entrySet()) {
+		for (Map.Entry<String,String> entry : args.getArgsWithFlag().entrySet()) {
 
-				parameters.put(entry.getKey(), entry.getValue().get(0));
+				parameters.put(entry.getKey(), entry.getValue());
 
 		}
 		execution=new Execution();
@@ -57,7 +57,7 @@ public class InitAndExecuteAction implements Action<Execution> {
 		List<PipelineParameter> parametersToUse=pipelineToUse.getParameters();
 		for (PipelineParameter pipelineParameter : parametersToUse) {
 			if (execution.getInputValues().get(pipelineParameter.getName())==null) {
-				System.err.println("not enough inputs or input not correct");
+				System.err.println("not enough inputs or inputs not correct");
 				exit(0);
 			}
 		}
