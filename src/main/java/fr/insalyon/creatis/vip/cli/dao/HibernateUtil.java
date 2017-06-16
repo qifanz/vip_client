@@ -11,9 +11,9 @@ public class HibernateUtil {
 	private static SessionFactory sessionFactory;
 	private static Session session;
 
-	public static void init() {
+	public static void init(String databasePosition) {
 		Configuration configuration = new Configuration().configure();
-
+		configuration.setProperty("hibernate.connection.url",databasePosition);
 		serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 
 		sessionFactory = configuration.buildSessionFactory(serviceRegistry);

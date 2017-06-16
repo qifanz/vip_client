@@ -37,6 +37,7 @@ public class Controller {
         PropertyCli property=UtilIO.GetPropertyCli(new File("../property"));
         String apiKeyValue =property.getApiKey();
         String base=property.getBasePath();
+        String databasePosition=property.getDataBasePosition();
 
         // initialize the client and api key
        // File apiKeyFile = new File("../ApiKey.txt");
@@ -51,7 +52,7 @@ public class Controller {
 
         // Hibernate initialization
         java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
-        HibernateUtil.init();
+        HibernateUtil.init(databasePosition);
         try {
             switch ((arguments.getAction())) {
                 case "execute": {
