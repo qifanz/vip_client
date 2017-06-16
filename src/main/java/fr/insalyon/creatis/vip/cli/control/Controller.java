@@ -12,6 +12,7 @@ import fr.insalyon.creatis.vip.cli.action.KillExecutionAction;
 import fr.insalyon.creatis.vip.cli.dao.HibernateUtil;
 import fr.insalyon.creatis.vip.cli.model.InfoExecution;
 import fr.insalyon.creatis.vip.cli.dao.InfoExecutionDAO;
+import fr.insalyon.creatis.vip.cli.model.PropertyCli;
 import fr.insalyon.creatis.vip.cli.vue.UtilIO;
 import fr.insalyon.creatis.vip.java_client.ApiClient;
 import fr.insalyon.creatis.vip.java_client.ApiException;
@@ -27,19 +28,26 @@ import static java.lang.System.exit;
  * @author qzhang
  */
 public class Controller {
-    public final static String base = "http://vip.creatis.insa-lyon.fr/rest";
+   // public final static String base = "http://vip.creatis.insa-lyon.fr:4040/rest-test/rest";
 
     public static void main(String args[]) {
 
         Arguments arguments = new Arguments(args);
 
+        PropertyCli property=UtilIO.GetPropertyCli(new File("../property"));
+        String apiKeyValue =property.getApiKey();
+        String base=property.getBasePath();
+
         // initialize the client and api key
-        File apiKeyFile = new File("../ApiKey.txt");
-        String apiKeyValue = UtilIO.GetApiKey(apiKeyFile);
+       // File apiKeyFile = new File("../ApiKey.txt");
+       // String apiKeyValue = UtilIO.GetApiKey(apiKeyFile);
         ApiClient client = new ApiClient();
         client.setBasePath(base);
         client.setApiKey(apiKeyValue);
         DefaultApi api = new DefaultApi(client);
+
+        System.out.println(apiKeyValue);
+        System.out.println(base);
 
         // Hibernate initialization
         java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);

@@ -1,0 +1,3 @@
+APIKEY:k1rqqcir5ou22akeg9gm14l17e
+DATABASE:jdbc:h2:~/Github/vip_client/VipClientDb
+BASEPATH:http://vip.creatis.insa-lyon.fr/rest
