@@ -22,6 +22,7 @@ import fr.insalyon.creatis.vip.java_client.model.Execution;
 import java.io.File;
 import java.util.logging.Level;
 
+import static fr.insalyon.creatis.vip.cli.control.ArgType.*;
 import static java.lang.System.exit;
 
 /**
@@ -55,7 +56,7 @@ public class Controller {
         HibernateUtil.init(databasePosition);
         try {
             switch ((arguments.getAction())) {
-                case "execute": {
+                case EXECUTE: {
                     InitAndExecuteAction initAndExecuteAction = new InitAndExecuteAction(api, arguments);
                     Execution execution = initAndExecuteAction.execute();
                     UtilIO.printExecuteResult(execution, initAndExecuteAction.getRepertoire());
@@ -65,7 +66,7 @@ public class Controller {
                     infoDAO.persist(infoExecution);
                     break;
                 }
-                case "status": {
+                case STATUS: {
                     GetExecutionAction getExecutionAction = new GetExecutionAction(api, arguments);
                     Execution execution = getExecutionAction.execute();
                     UtilIO.printExecutionDetail(execution);
@@ -73,25 +74,26 @@ public class Controller {
                     infoDAO.upadteStatusByExecutionId(execution.getIdentifier(), execution.getStatus().toString());
                     break;
                 }
-                case "executions":
+                case EXECTUIONS:
                     InfoExecutionDAO infoDao = new InfoExecutionDAO();
                     UtilIO.printListInfoExecutions(infoDao.getAllExecutions());
                     break;
-                case "download":
+                case DOWNLOAD:
                     GetResultAction getResultAction = new GetResultAction(api, arguments);
                     UtilIO.downloadFile(getResultAction.execute(),getResultAction.getDirectory());
                     break;
-                case "kill":
+                case KILL:
                     KillExecutionAction killExecutionAction=new KillExecutionAction(api,arguments);
                     killExecutionAction.execute();
-                case "incorrect":
+                    break;
+                case INCORRECT:
                     System.err.println("Option not correct.");
                     exit(0);
                     break;
+
             }
 
         } catch (ApiException e) {
-            //HibernateUtil.cancelTransaction();
             System.err.println(e.getResponseBody());
         } finally {
             HibernateUtil.close();

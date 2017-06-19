@@ -11,7 +11,7 @@ public class Arguments {
     private Map<String,String> argsWithFlag;
     private List<String> argsWithoutFlag;
 
-    private String action;
+    private ArgType action;
 
     public Arguments(String[] args) {
         if (args.length == 0) {
@@ -23,22 +23,22 @@ public class Arguments {
         argsWithoutFlag= new ArrayList<>();
         switch (args[0]) {
             case "execute":
-                action = "execute";
+                action = ArgType.EXECUTE;
                 break;
             case "status":
-                action = "status";
+                action = ArgType.STATUS;
                 break;
             case "executions":
-                action = "executions";
+                action = ArgType.EXECTUIONS;
                 break;
             case "download":
-                action = "download";
+                action = ArgType.DOWNLOAD;
                 break;
             case "kill":
-                action="kill";
+                action= ArgType.KILL;
                 break;
             default:
-                action = "incorrect";
+                action = ArgType.INCORRECT;
         }
 
         int it = 1;
@@ -67,7 +67,7 @@ public class Arguments {
 
     public List<String> getArgsWithoutFlag(){return argsWithoutFlag;}
 
-    public String getAction() {
+    public ArgType getAction() {
         return action;
     }
 
