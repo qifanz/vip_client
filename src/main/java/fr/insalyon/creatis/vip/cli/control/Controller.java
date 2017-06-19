@@ -29,20 +29,17 @@ import static java.lang.System.exit;
  * @author qzhang
  */
 public class Controller {
-   // public final static String base = "http://vip.creatis.insa-lyon.fr:4040/rest-test/rest";
+    public static String apiKeyValue;
 
     public static void main(String args[]) {
 
         Arguments arguments = new Arguments(args);
 
         PropertyCli property=UtilIO.GetPropertyCli(new File("../property"));
-        String apiKeyValue =property.getApiKey();
+        apiKeyValue =property.getApiKey();
         String base=property.getBasePath();
         String databasePosition=property.getDataBasePosition();
 
-        // initialize the client and api key
-       // File apiKeyFile = new File("../ApiKey.txt");
-       // String apiKeyValue = UtilIO.GetApiKey(apiKeyFile);
         ApiClient client = new ApiClient();
         client.setBasePath(base);
         client.setApiKey(apiKeyValue);
@@ -54,6 +51,7 @@ public class Controller {
         // Hibernate initialization
         java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
         HibernateUtil.init(databasePosition);
+        InfoExecutionDAO infoDAO = new InfoExecutionDAO();
         try {
             switch ((arguments.getAction())) {
                 case EXECUTE: {
@@ -62,7 +60,6 @@ public class Controller {
                     UtilIO.printExecuteResult(execution, initAndExecuteAction.getRepertoire());
                     InfoExecution infoExecution = new InfoExecution(execution.getIdentifier(), execution.getPipelineIdentifier(),
                             execution.getStatus().toString(), initAndExecuteAction.getRepertoire(), execution.getStartDate());
-                    InfoExecutionDAO infoDAO = new InfoExecutionDAO();
                     infoDAO.persist(infoExecution);
                     break;
                 }
@@ -70,13 +67,11 @@ public class Controller {
                     GetExecutionAction getExecutionAction = new GetExecutionAction(api, arguments);
                     Execution execution = getExecutionAction.execute();
                     UtilIO.printExecutionDetail(execution);
-                    InfoExecutionDAO infoDAO = new InfoExecutionDAO();
                     infoDAO.upadteStatusByExecutionId(execution.getIdentifier(), execution.getStatus().toString());
                     break;
                 }
                 case EXECTUIONS:
-                    InfoExecutionDAO infoDao = new InfoExecutionDAO();
-                    UtilIO.printListInfoExecutions(infoDao.getAllExecutions());
+                    UtilIO.printListInfoExecutions(infoDAO.getAllExecutions());
                     break;
                 case DOWNLOAD:
                     GetResultAction getResultAction = new GetResultAction(api, arguments);

@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.Base64;
 import java.util.List;
 
+import fr.insalyon.creatis.vip.cli.control.Controller;
 import fr.insalyon.creatis.vip.cli.model.InfoExecution;
 import fr.insalyon.creatis.vip.cli.model.PropertyCli;
 import fr.insalyon.creatis.vip.java_client.model.Execution;
@@ -120,14 +121,13 @@ public class UtilIO {
 
     public static void downloadFile(List<String> urls, String dest) {
 
-        String apiKeyValue="";
         try {
             for (String url : urls) {
                 URL fileUrl = new URL(url);
                 System.out.println(url);
                 HttpURLConnection httpConnection = (HttpURLConnection) fileUrl.openConnection();
                 httpConnection.setRequestMethod("GET");
-                httpConnection.setRequestProperty("apiKey", apiKeyValue);
+                httpConnection.setRequestProperty("apiKey", Controller.apiKeyValue);
                 InputStream response = httpConnection.getInputStream();
 
                 InputStream decodedResponse = Base64.getDecoder().wrap(response);

@@ -21,7 +21,7 @@ public class InfoExecutionDAO {
 		HibernateUtil.beginTransaction();
 
 		Query query = HibernateUtil.getSession()
-				.createQuery("Select e from InfoExecution e where ExecutionIdentifier=:id");
+				.createQuery("Select e from InfoExecution e where executionIdentifier=:id");
 		query.setParameter("id", executionIdentifier);
 
 		List<InfoExecution> listInfos = new ArrayList<>();
