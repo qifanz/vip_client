@@ -7,10 +7,13 @@ public class PropertyCli {
     private String dataBasePosition;
     private String apiKey;
     private String basePath;
-    public PropertyCli(String apiKey, String dataBasePosition,String basePath) {
+    private int refreshTime;
+
+    public PropertyCli(String apiKey, String dataBasePosition, String basePath, String refreshTime) {
         this.dataBasePosition = dataBasePosition;
         this.apiKey = apiKey;
-        this.basePath=basePath;
+        this.basePath = basePath;
+        this.refreshTime = Integer.parseInt(refreshTime);
     }
 
     public String getDataBasePosition() {
@@ -20,7 +23,10 @@ public class PropertyCli {
     public String getApiKey() {
         return apiKey;
     }
-    public String getBasePath(){
+
+    public String getBasePath() {
         return basePath;
     }
+
+    public int getRefreshTime() { return refreshTime; }
 }

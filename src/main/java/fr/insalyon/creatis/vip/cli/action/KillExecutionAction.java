@@ -23,6 +23,7 @@ public class KillExecutionAction implements Action<Object> {
 
     private void setExecutionIdentifier() {
         try{
+
             executionId=args.getArgsWithoutFlag().get(0);
         } catch (IndexOutOfBoundsException e) {
             InfoExecutionDAO infoDao=new InfoExecutionDAO();

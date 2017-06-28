@@ -18,7 +18,7 @@ public class InitAndExecuteAction implements Action<Execution> {
 	private Execution execution;
 	private DefaultApi api;
 	private Arguments args;
-	private String repertoire;
+	private String directoryOnVip;
 
 	public InitAndExecuteAction(DefaultApi api, Arguments args) {
 		this.api = api;
@@ -28,11 +28,13 @@ public class InitAndExecuteAction implements Action<Execution> {
 	
 	private void setExecution(){
 		Map<String, Object> parameters = new HashMap<>();
-		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd_HHmmss");
-		repertoire = "/vip/Home/" + df.format(new Date());
-		parameters.put("results-directory", repertoire);
+		if (!args.getOptions().contains("nodir")) {
+			SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd_HHmmss");
+			directoryOnVip = "/vip/Home/" + df.format(new Date());
+			parameters.put("results-directory", directoryOnVip);
+		}
 		for (Map.Entry<String,String> entry : args.getArgsWithFlag().entrySet()) {
-
+			if (entry.getKey()!="results")
 				parameters.put(entry.getKey(), entry.getValue());
 
 		}
@@ -47,8 +49,8 @@ public class InitAndExecuteAction implements Action<Execution> {
 		execution.setInputValues(parameters);
 	}
 
-	public String getRepertoire (){
-		return repertoire;
+	public String getDirectoryOnVip(){
+		return directoryOnVip;
 	}
 	
 	
@@ -57,6 +59,7 @@ public class InitAndExecuteAction implements Action<Execution> {
 		List<PipelineParameter> parametersToUse=pipelineToUse.getParameters();
 		for (PipelineParameter pipelineParameter : parametersToUse) {
 			if (execution.getInputValues().get(pipelineParameter.getName())==null) {
+				System.err.println(pipelineParameter.getName()+" not found");
 				System.err.println("not enough inputs or inputs not correct");
 				exit(0);
 			}

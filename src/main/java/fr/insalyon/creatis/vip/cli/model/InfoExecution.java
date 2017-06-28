@@ -1,13 +1,9 @@
 package fr.insalyon.creatis.vip.cli.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "InfoExecution")
@@ -27,15 +23,16 @@ public class InfoExecution implements Serializable {
 	private String status;
 	@Column(name = "Repersitory")
 	private String repersitory;
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "StartDate")
-	private Long startdate;
+	private Date startdate;
 	
 	
 	public InfoExecution() {
 
 	}
 
-	public InfoExecution(String executionIdentifier,String pipelineIdentifier, String status, String repersitory, Long startdate) {
+	public InfoExecution(String executionIdentifier,String pipelineIdentifier, String status, String repersitory, Date startdate) {
 		super();
 		this.executionIdentifier = executionIdentifier;
 		this.pipelineIdentifier=pipelineIdentifier;
@@ -111,11 +108,11 @@ public class InfoExecution implements Serializable {
 		this.repersitory = repersitory;
 	}
 
-	public Long getStartdate() {
+	public Date getStartdate() {
 		return startdate;
 	}
 
-	public void setStartdate(Long startdate) {
+	public void setStartdate(Date startdate) {
 		this.startdate = startdate;
 	}
 

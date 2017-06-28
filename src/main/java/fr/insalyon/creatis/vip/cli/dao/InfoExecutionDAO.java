@@ -1,6 +1,7 @@
 package fr.insalyon.creatis.vip.cli.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import fr.insalyon.creatis.vip.cli.dao.HibernateUtil;
@@ -30,6 +31,34 @@ public class InfoExecutionDAO {
 		}
 		for (InfoExecution info : listInfos) {
 			info.setStatus(status);
+		}
+		HibernateUtil.commitTransaction();
+		HibernateUtil.closeSession();
+	}
+
+	public void deleteExecution (String executionIdentifier ) {
+		HibernateUtil.openSession();
+		HibernateUtil.beginTransaction();
+		Query query = HibernateUtil.getSession()
+				.createQuery("Select e from InfoExecution e where executionIdentifier=:id");
+		query.setParameter("id", executionIdentifier);
+		InfoExecution toDelete=(InfoExecution)query.list().get(0);
+		HibernateUtil.getSession().delete(toDelete);
+		HibernateUtil.commitTransaction();
+		HibernateUtil.closeSession();
+
+	}
+
+	public void deleteExecution (Date date) {
+		HibernateUtil.openSession();
+		HibernateUtil.beginTransaction();
+		Query query = HibernateUtil.getSession()
+				.createQuery("Select e from InfoExecution e where startdate<:date");
+		query.setTimestamp("date",date);
+		//query.setParameter("now",new Date());
+		List<InfoExecution> toDelete=(List<InfoExecution>)query.list();
+		for (InfoExecution info:toDelete) {
+			HibernateUtil.getSession().delete(info);
 		}
 		HibernateUtil.commitTransaction();
 		HibernateUtil.closeSession();

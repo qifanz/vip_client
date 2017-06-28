@@ -5,6 +5,7 @@
  */
 package fr.insalyon.creatis.vip.cli.action;
 
+import fr.insalyon.creatis.vip.cli.control.Arguments;
 import fr.insalyon.creatis.vip.java_client.ApiException;
 import fr.insalyon.creatis.vip.java_client.api.DefaultApi;
 import fr.insalyon.creatis.vip.java_client.model.Pipeline;
@@ -20,20 +21,17 @@ public class GetPipelineAction implements Action<Pipeline>{
     private DefaultApi api;
     
 
-    public GetPipelineAction(String name) {
-    	 pipelineName=name;
+    public GetPipelineAction(DefaultApi api,Arguments args) {
+
+        this.api=api;
+        pipelineIdentifier=args.getArgsWithoutFlag().get(0);
     }
 
     
     public Pipeline execute() throws ApiException{
-        List<Pipeline> listPipelines=api.listPipelines("");
-        for (Pipeline pipeline:listPipelines) {
-            if (pipeline.getName().equals(pipelineName)) {
-                pipelineIdentifier=pipeline.getIdentifier().replaceAll("/" ,"%2F");
-            }
-        }
+
        
-        return api.getPipeline(pipelineIdentifier);
+        return api.getPipeline(pipelineIdentifier.replaceAll("/" ,"%2F"));
     }
     
 }
