@@ -60,7 +60,6 @@ public class InitAndExecuteAction implements Action<Execution> {
 		for (PipelineParameter pipelineParameter : parametersToUse) {
 			if (execution.getInputValues().get(pipelineParameter.getName())==null) {
 				System.err.println(pipelineParameter.getName()+" not found");
-				System.err.println("not enough inputs or inputs not correct");
 				exit(0);
 			}
 		}

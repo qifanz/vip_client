@@ -1,11 +1,10 @@
 package fr.insalyon.creatis.vip.cli.control;
 
-import com.sun.org.apache.xpath.internal.Arg;
+import fr.insalyon.creatis.vip.cli.model.ArgumentException;
 
 import java.util.*;
 
 import static fr.insalyon.creatis.vip.cli.control.ArgType.*;
-import static java.lang.System.exit;
 
 public class Arguments {
     private Map<String, String> argsWithFlag;
@@ -46,6 +45,12 @@ public class Arguments {
                 break;
             case "testargs":
                 action=TESTARGS;
+                break;
+            case "setapikey":
+                action=SETAPIKEY;
+                break;
+            case "getapikey":
+                action=GETAPIKEY;
                 break;
             default:
                 throw new ArgumentException("Option not correct.");

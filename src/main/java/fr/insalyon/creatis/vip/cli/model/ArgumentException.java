@@ -1,4 +1,4 @@
-package fr.insalyon.creatis.vip.cli.control;
+package fr.insalyon.creatis.vip.cli.model;
 
 /**
  * Created by qifan on 2017/6/28.

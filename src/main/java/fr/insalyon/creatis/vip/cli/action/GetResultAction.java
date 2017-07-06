@@ -52,12 +52,23 @@ public class GetResultAction implements Action<List<String>> {
     @Override
     public List<String> execute() throws ApiException {
         Map<String, List<String>> returnedFiles = api.getExecution(executionId).getReturnedFiles();
-        List<String> urls = returnedFiles.get("output_file");
+        //TODO:check urls not null
+        List<String> urls=null;
+        for (String key : returnedFiles.keySet()) {
+            System.out.println(key + ":" + returnedFiles.get(key));
+        }
+        if (args.getOptions().contains("gate")) {
+            urls=returnedFiles.get("merged_result");
+
+        } else {
+             urls = returnedFiles.get("output_file");
+        }
         List<String> usableUrls = new ArrayList<>();
         String base = api.getApiClient().getBasePath() + "/path/content?uri=vip://vip.creatis.insa-lyon.fr/vip/Home";
         for (String url : urls) {
-            int pos = url.indexOf('/', 13);
+            int pos = url.indexOf('/', "/vip/Users//".length());
             usableUrls.add(base + url.substring(pos));
+            System.out.println(base + url.substring(pos));
         }
         return usableUrls;
     }

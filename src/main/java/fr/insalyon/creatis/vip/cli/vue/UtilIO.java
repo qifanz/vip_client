@@ -5,13 +5,16 @@ import static java.lang.System.exit;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
 import fr.insalyon.creatis.vip.cli.control.Controller;
 import fr.insalyon.creatis.vip.cli.model.InfoExecution;
 import fr.insalyon.creatis.vip.cli.model.PropertyCli;
+import fr.insalyon.creatis.vip.cli.model.PropertyException;
 import fr.insalyon.creatis.vip.java_client.model.Execution;
 import fr.insalyon.creatis.vip.java_client.model.Pipeline;
 import fr.insalyon.creatis.vip.java_client.model.PlatformProperties;
@@ -23,7 +26,7 @@ public class UtilIO {
     private final static String FLAGREFRESHTIME = "REFRESHTIME";
 
 
-    public static PropertyCli GetPropertyCli(File propertyFile) {
+    public static PropertyCli GetPropertyCli(File propertyFile) throws PropertyException {
         try {
             InputStream is = new FileInputStream(propertyFile);
             Properties prop = new Properties();
@@ -33,7 +36,16 @@ public class UtilIO {
             String database = (String) prop.get(FLAGDATABASE);
             String basepath = (String) prop.get(FLAGBASEPATH);
             String refreshTime = (String) prop.get(FLAGREFRESHTIME);
-
+            is.close();
+            if (database==null) {
+                throw new PropertyException("Database property not found");
+            }
+            if (basepath==null) {
+                throw new PropertyException("Base Path property not found");
+            }
+            if (refreshTime==null) {
+                throw new PropertyException("refresh time property not found");
+            }
             return new PropertyCli(apikey, database, basepath, refreshTime);
 
 
@@ -70,6 +82,12 @@ public class UtilIO {
         }
 
     }
+    public static void printListExecutions (List<Execution> executionList) {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        for (Execution e:executionList) {
+            System.out.println (e.getIdentifier()+","+e.getPipelineIdentifier()+","+df.format(new Date(e.getStartDate()))+","+e.getStatus());
+        }
+    }
 
     public static void printPlatformProperties(PlatformProperties platformproperty) {
         System.out.println("Platform name: " + platformproperty.getPlatformName());
@@ -96,9 +114,9 @@ public class UtilIO {
                 HttpURLConnection httpConnection = (HttpURLConnection) fileUrl.openConnection();
                 httpConnection.setRequestMethod("GET");
                 httpConnection.setRequestProperty("apiKey", Controller.apiKeyValue);
-                InputStream response = httpConnection.getInputStream();
+                InputStream inputStream = httpConnection.getInputStream();
 
-                InputStream decodedResponse = Base64.getDecoder().wrap(response);
+                InputStream decodedInputStream = Base64.getDecoder().wrap(inputStream);
                 File file = new File(dest + url.substring(url.lastIndexOf('/')));
                 file.createNewFile();
                 OutputStream outputStream =
@@ -107,9 +125,12 @@ public class UtilIO {
                 int read = 0;
                 byte[] bytes = new byte[1024];
 
-                while ((read = decodedResponse.read(bytes)) != -1) {
+                while ((read = decodedInputStream.read(bytes)) != -1) {
                     outputStream.write(bytes, 0, read);
                 }
+                inputStream.close();
+                decodedInputStream.close();
+                outputStream.close();
 
                 System.out.println("Done!");
             }
